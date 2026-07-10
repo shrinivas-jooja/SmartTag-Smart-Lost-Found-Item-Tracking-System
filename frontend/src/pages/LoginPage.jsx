@@ -26,7 +26,8 @@ const LoginPage = () => {
     }
 
     try {
-      const response = await fetch('http://localhost:8001/api/login', {
+      const apiBase = process.env.NODE_ENV === 'production' ? '/api' : 'http://localhost:8001/api';
+      const response = await fetch(`${apiBase}/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

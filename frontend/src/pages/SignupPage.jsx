@@ -39,7 +39,8 @@ const SignupPage = () => {
     setLoading(true);
 
     try {
-      const response = await fetch('http://localhost:8001/api/signup', {
+      const apiBase = process.env.NODE_ENV === 'production' ? '/api' : 'http://localhost:8001/api';
+      const response = await fetch(`${apiBase}/signup`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
